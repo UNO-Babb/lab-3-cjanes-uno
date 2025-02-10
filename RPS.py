@@ -8,9 +8,10 @@ def main():
   wins = 0
   ties = 0
   losses = 0
+
   #Create a loop that continues as long as the user wants to play.
   playAgain = "Y"
-  while playAgain == "Y":
+  while playAgain.upper() == "Y":
     #User can play as many games as they wish.
     #Randomly choose the computer between 'R', 'P', or 'S'
     computer = random.choice( ["R", "P", "S"])
@@ -19,17 +20,11 @@ def main():
     while True:
       player = input("Choose your \"weapon\" (R, P, S): ").upper()
       if player in ["R", "P", "S"]:
-          #look over documentation and see if you need to move the "if player ==" content up to here and be part of the loop
-    #End selection loop.
+        break #break should indicate that the immediate loop is valid and continues post while argument
+      else:
+        print("Ope, try again. Please enter R, P, or S.")
 
     #Determine winner and state what happened to the user
-    if computer == "R":
-      print("Computer chose Rock")
-    elif computer == "P":
-      print("Computer chose Paper")
-    else:
-      print("Computer chose Scissors")
-
     if player == "R":
       print("Player chose Rock")
     elif player == "P":
@@ -37,13 +32,42 @@ def main():
     else:
       print("Player chose Scissors")
 
+    if computer == "R":
+      print("Computer chose Rock")
+    elif computer == "P":
+      print("Computer chose Paper")
+    else:
+      print("Computer chose Scissors")
+
     if player == "R" and computer == "R":
       print("Ah, a tie!")
       ties = ties + 1
     if player == "R" and computer == "P":
       print("Computer beat you this time.")
+      losses = losses + 1
     if player == "R" and computer == "S":
       print("You win!")
+      wins = wins + 1
+    
+    if player == "P" and computer == "R":
+      print("You win!")
+      wins = wins + 1
+    if player == "P" and computer == "P":
+      print("Ah, a tie!")
+      ties = ties + 1
+    if player == "P" and computer == "S":
+      print("Computer beat you this time.")
+      losses = losses + 1
+
+    if player == "S" and computer == "R":
+      print("Computer beat you this time.")
+      losses = losses + 1   
+    if player == "S" and computer == "P":
+      print("You win!")
+      wins = wins + 1
+    if player == "S" and computer == "S":
+      print("Ah, a tie!")
+      ties = ties + 1
     
     #Ask the user if they would like to play again.
     playAgain = input("Would you like to play again? (Y/N): ")
