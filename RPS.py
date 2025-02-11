@@ -1,6 +1,6 @@
 #RPS.py
 #Name: Colton Janes
-#Date: 02/09/2025
+#Date: 02/09/2025 (edits made on 02/11/2025 to add "while True:..." argument to Y/N question in case user doesn't provide "Y" or "N" and to also allow for lowercase entry via .upper().)
 #Assignment: Lab 3 - RPS
 import random
 
@@ -70,7 +70,12 @@ def main():
       ties = ties + 1
     
     #Ask the user if they would like to play again.
-    playAgain = input("Would you like to play again? (Y/N): ")
+    while True:
+      playAgain = input("Would you like to play again? (Y/N): ").upper()
+      if playAgain in ["Y", "N"]:
+        break #break should indicate that the immediate loop is valid and continues post while argument
+      else:
+        print("Ope, try again. Please enter \"Y\" or \"N\".")
 
   #In the end, print the stats
   print("Wins \t Ties \t Losses")
